@@ -4,7 +4,7 @@
 
 using namespace std;
 
-double sum1(int N, int j, int n2, int max, int min);
+double sum1(int N, int j, int n2, int max, int min, int rec);
 double K2(int N, int j);
 
 
@@ -17,13 +17,14 @@ int main()
 	int N;
 	cout << "Ââåä³òü ÷èñëî: "; cin >> N;
 	cout << "___________________________________" << endl;
-	cout << "Ñóìà: " << sum1(N, 0, 0, 0, 9) << endl;
+	cout << "Ñóìà: " << sum1(N, 0, 0, 0, 9, 0) << endl;
 	cout << "Ê³ëüê³ñòü öèôğ: " << K2(N, 1) << endl;
 	cout << "___________________________________" << endl;
 }
 
-double sum1(int N, int j, int n2, int max, int min)
+double sum1(int N, int j, int n2, int max, int min, int rec)
 {
+	
 	if (N != 0)
 	{
 		j += N % 10;
@@ -33,10 +34,11 @@ double sum1(int N, int j, int n2, int max, int min)
 		if (min > n2)
 			min = n2;
 		N /= 10;
-		return sum1(N, j,n2,max,min);
+		return sum1(N, j,n2,max,min, ++rec);
 	}
 	cout << "Ìàêñèìàëüíà öèôğà: " << max << endl;
 	cout << "Ì³í³ìàëüíà öèôğà: " << min << endl;
+	cout << "Ğ³âåíü ğåêóğñ³¿: " << rec << endl;
 	return j;
 	
 }
